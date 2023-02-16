@@ -1,0 +1,46 @@
+version: '3.0'
+
+services: 
+  db: 
+    image: mysql
+    restart: always
+
+    volumes:
+      - "./.docker/mysql-data/db:/var/lib/mysql"
+
+    environment: 
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: payeer_bonus
+      MYSQL_USER: firdavs
+      MYSQL_PASSWORD: nobody
+
+    ports: 
+      - 3000:3306
+
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+      - cache:/data
+
+  server:
+    image: ubuntu
+    command: apt update & upgrade
+    command: apt install php -y
+    command: apt install wget -y
+    command: wget https://getcomposer.org/download/2.5.3/composer.phar
+    command: mv composer.phar /usr/local/bin/composer
+    tty: true
+    ports:
+      - 8080:200
+
+
+volumes:
+  db:
+    driver: local
+  cache:
+    driver: local
+

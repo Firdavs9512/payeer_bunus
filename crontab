@@ -1,0 +1,14 @@
+apt-get update
+apt-get install -y cron
+apt-get install -y nano
+crontab -e
+[]
+
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+
+[]
+
+crontab -l
+service cron
+service cron reload restart status
+
