@@ -59,7 +59,11 @@
             </div>
             <div class="auth__row">
                 <label for="">Подтвердите что Вы не бот:</label>
-                <div>capcha</div>
+                <div><script src="https://www.google.com/recaptcha/api.js" 
+                            async defer></script>
+                    <div class="g-recaptcha" id="feedback-recaptcha" 
+                         data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}">
+                    </div></div>
             </div>
             <div class="auth__row">
                 <label>Ознакомьтесь с правилами:</label>

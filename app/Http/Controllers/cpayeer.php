@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Http\Controllers;
+
 class CPayeer
 {
 	private $url = 'https://payeer.com/ajax/api/api.php';

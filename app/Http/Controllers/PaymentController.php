@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\User;
+use App\Http\Controllers\cpayeer;
+use App\Models\Setting;
 
 class PaymentController extends Controller
 {
@@ -16,40 +18,37 @@ class PaymentController extends Controller
 
 
     private function payeer(){
-        require_once('cpayeer.php');
+        // require_once('cpayeer.php');
         $accountNumber = 'P1026451819';
         $apiId = '1833554167';
-        $apiKey = env('PAYEER_API_SECRET');
+        $apiKey = 'T6U4nXTJHOvxO558';
         $payeer = new CPayeer($accountNumber, $apiId, $apiKey);
         if ($payeer->isAuth())
         {
             $arTransfer = $payeer->transfer(array(
-                'curIn' => 'RUB',
-                'sum' => 1,
-                'curOut' => 'RUB',
+                'curIn' => 'USD',
+                'sum' => 1.1,
+                'curOut' => 'USD',
                 //'sumOut' => 1,
-                'to' => 'P1000000',
+                'to' => 'P1029930071',
                 //'to' => 'client@mail.com',
-                //'comment' => 'test',
+                'comment' => 'test',
                 //'protect' => 'Y',
                 //'protectPeriod' => '3',
                 //'protectCode' => '12345',
             ));
-            if (empty($arTransfer['errors']))
+            if (isset($arTransfer['errors']))
             {
-                return response()->json(['message'=>$arTransfer['historyId'].": Перевод средств успешно выполнен"])
-                // echo $arTransfer['historyId'].": Перевод средств успешно выполнен";
+                return $arTransfer;
             }
             else
             {
-                return response()->json(['error'=>$arTransfer["errors"]]);
-                // echo '<pre>'.print_r($arTransfer["errors"], true).'</pre>';
+                return $arTransfer;
             }
         }
         else
         {
-            return response()->json(['error'=>$payeer->getErrors()]);
-            // echo '<pre>'.print_r($payeer->getErrors(), true).'</pre>';
+            // $payeer->getErrors();
         }
 
     }
@@ -73,7 +72,8 @@ class PaymentController extends Controller
         }
 
         // BU yerga payeer pul utkazish function yoziladi
-        $this->payeer();
+        $ress = $this->payeer();
+        return response()->json(['message'=> $ress]);
 
 
         // Payment utkazilgani haqida bazaga malumot qushish
