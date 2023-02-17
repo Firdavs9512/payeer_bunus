@@ -58,7 +58,12 @@ Route::post('/bonus',[BonusController::class,'getbonus'])->name('getbonus')->mid
 
 Route::prefix('admin')->group(function () {
     Route::get('/',[AdminController::class,'index'])->name('admin');
+    Route::get('/login',[AdminController::class,'login']);
+    Route::post('/login',[AdminController::class,'loginreq'])->name('admin.loginreq');
     Route::get('/users',[UserController::class,'index'])->name('admin.users');
+    Route::get('/users/{id}',[UserController::class, 'show']);
+    Route::post('/users/{id}',[UserController::class, 'update'])->name('admin.user.update');
     Route::get('/payments',[UserController::class,'payment'])->name('admin.payment');
     Route::get('/settings',[AdminController::class,'settings'])->name('admin.settings');
+    Route::get('/ads',[AdminController::class,'ads'])->name('admin.ads');
 });

@@ -17,37 +17,38 @@ class PaymentController extends Controller
     }
 
 
-    private function payeer(){
+    private function payeer($send_a, $send_s){
         // require_once('cpayeer.php');
-        $accountNumber = 'P1026451819';
-        $apiId = '1833554167';
-        $apiKey = 'T6U4nXTJHOvxO558';
+        $accountNumber = env("PAYEER_ADDR","P1026451819");
+        $apiId = env("PAYEER_API_KEY", 1833554167);
+        $apiKey = env("PAYEER_API_SECRET");
         $payeer = new CPayeer($accountNumber, $apiId, $apiKey);
         if ($payeer->isAuth())
         {
             $arTransfer = $payeer->transfer(array(
-                'curIn' => 'USD',
-                'sum' => 1.1,
-                'curOut' => 'USD',
+                'curIn' => 'RUB',
+                'sum' => $send_s,
+                'curOut' => 'RUB',
                 //'sumOut' => 1,
-                'to' => 'P1029930071',
+                'to' => $send_a,
                 //'to' => 'client@mail.com',
-                'comment' => 'test',
+                'comment' => 'https://earn-money.uz',
                 //'protect' => 'Y',
                 //'protectPeriod' => '3',
                 //'protectCode' => '12345',
             ));
             if (isset($arTransfer['errors']))
             {
-                return $arTransfer;
+                return ["history"=>"","error"=>$arTransfer["errors"]];
             }
             else
             {
-                return $arTransfer;
+                return ["history"=>$arTransfer["historyId"],"error"=>""];
             }
         }
         else
         {
+            return ["history"=>"","error"=>$payeer->getErrors()];
             // $payeer->getErrors();
         }
 
@@ -72,15 +73,19 @@ class PaymentController extends Controller
         }
 
         // BU yerga payeer pul utkazish function yoziladi
-        $ress = $this->payeer();
-        return response()->json(['message'=> $ress]);
+        $ress = $this->payeer(auth()->user()->payeer,auth()->user()->balance);
+        if (isset($ress["error"]))
+        {
+            return response()->json(['error'=>$ress['error']]);
+        }
+
 
 
         // Payment utkazilgani haqida bazaga malumot qushish
         $payeer = Payment::create([
             'payeer_adress' => auth()->user()->payeer,
             'summ' => auth()->user()->balanse,
-            'number' => 1, // bu yerga payeerdan pul utkazalgandan kiyin keladigan id yoziladi
+            'number' => $ress['history'], // bu yerga payeerdan pul utkazalgandan kiyin keladigan id yoziladi
             'name' => auth()->user()->name,
             'user_id' => auth()->user()->id,
         ]);

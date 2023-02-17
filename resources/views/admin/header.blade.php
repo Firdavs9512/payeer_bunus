@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
-    @vite('resources/css/admin.css')
+   <link rel="stylesheet" href="/assets/css/admin.css">
 </head>
 <body>
 
@@ -20,11 +20,11 @@
 <header>
    <div class="container">
    	<nav>
-   		<a class="btn" href="#">Index</a>
-   		<a class="btn" href="#">Setting</a>
-   		<a class="btn" href="#">Users</a>
-   		<a class="btn" href="#">Paymetns</a>
-   		<a class="btn" href="#">Ads</a>
+   		<a class="btn" href="{{ route('admin') }}">Index</a>
+   		<a class="btn" href="{{ route('admin.settings') }}">Setting</a>
+   		<a class="btn" href="{{ route('admin.users') }}">Users</a>
+   		<a class="btn" href="{{ route('admin.payment') }}">Paymetns</a>
+   		<a class="btn" href="{{ route('admin.ads') }}">Ads</a>
    	</nav>
    </div>
 </header>

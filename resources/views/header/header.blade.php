@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/assets/css/jquery.notifyBar.css">
     <!-- <link rel="stylesheet" href="/assets/css/jquery.flipcountdown.css"> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lc-nIwkAAAAAMWMqnJJWd2Uy_BBcgKsVmYt-Yc9"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
     @vite('resources/css/app.css')

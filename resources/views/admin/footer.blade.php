@@ -13,7 +13,7 @@ if (info !==""){
     $.notifyBar({ cssClass: "info", html: info });
 }
 </script>
-
+<script src="/assets/js/admin.js"></script>
 
 </body>
 </html>

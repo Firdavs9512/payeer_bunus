@@ -3,12 +3,6 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-$base-spacing-unit: 24px;
-$half-spacing-unit: $base-spacing-unit / 2;
-
-$color-alpha: #1772FF;
-$color-form-highlight: #EEEEEE;
-
 
 body {
 	background-color: #8BC6EC;
@@ -91,3 +85,10 @@ th {
 	margin: 3px;
 }
 
+input {
+	padding: 3px;
+	border-radius: 3px;
+	overflow: hidden;
+	outline: none;
+	border: none;
+}

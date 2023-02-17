@@ -21,6 +21,9 @@
 <script type="text/javascript" src="/assets/js/bonus.js"></script>
 <script type="text/javascript">
 error = "{{ Session::get('error') }}";
+@error('g-recaptcha-response')
+    error = "{{ $message }}";
+@enderror
 if (error !==""){
     $.notifyBar({ cssClass: "error", html: error });
 }

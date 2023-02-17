@@ -98,11 +98,15 @@ class AuthController extends Controller
         $user = User::firstWhere('email',$request['email']);
 
         if ($user==null){
-            return redirect('/login')->with('error','Email not found!');
+            return redirect('/login')->with('error','Этот адрес электронной почты не зарегистрирован');
         }
 
         if ($request['password']!=$user['password']){
-            return redirect('/login')->with('error','Password or email not correct!');
+            return redirect('/login')->with('error','Пароль или электронная почта были введены неправильно');
+        }
+
+        if (!$user->active){
+            return redirect('/login')->with('error','Ваш аккаунт не активен. Пожалуйста, свяжитесь с администратором!');
         }
 
         Auth::login($user);

@@ -26,7 +26,7 @@
 					<th>{{ $user->password }}</th>
 					<th>{{ $user->balanse }}rub and {{ $user->money }}rub</th>
 					<th>{{ date_format( new DateTime($user->created_at), "d F Y H:i" ) }}</th>
-					<th> <a href="#">Active</a> </th>
+					<th> <a href="{{ route('admin.users') }}/{{ $user->id }}">Active</a> </th>
 				</tr>
 			</tbody>
 			@endforeach
