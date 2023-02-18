@@ -12,16 +12,12 @@ use App\Models\Payment;
 
 class StatistikaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Statistika uchun api
     public function index()
     {
         $workday = Setting::firstWhere('name','Work_day')['value']+123;
         $users = User::all()->count()+165;
-        $newusers = Setting::firstWhere('name','New_users')['value']+15;
+        $newusers = Setting::firstWhere('name','New_users')['value_int']+5;
         $payments = User::all()->sum('money')+123;
         $allbonus = Bonus::all()->count()+1965;
 
@@ -37,48 +33,20 @@ class StatistikaController extends Controller
         return response()->json($data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    // Admin panelda statistika datalarini olish
+    public function adminstatistik()
     {
-        //
-    }
+        $workday = Setting::firstWhere('name','Work_day')['value'];
+        $newusers = Setting::firstWhere('name','New_users')['value_int'];
+        $daypayments = Setting::firstWhere('name','Day_payments')['value_int'];
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $data = [
+            'workday'=>$workday,
+            'newusers' => $newusers,
+            'daypayments' => $daypayments,
+        ];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json($data);
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BonusController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\HelperController;
 use App\Http\Controllers\admin\UserController;
 
 
@@ -66,6 +67,7 @@ Route::middleware(['admin'])->group(function (){
         Route::post('/users/{id}',[UserController::class, 'update'])->name('admin.user.update');
         Route::get('/payments',[UserController::class,'payment'])->name('admin.payment');
         Route::get('/settings',[AdminController::class,'settings'])->name('admin.settings');
+        Route::post('/settings',[HelperController::class,'settingupdate']);
         Route::get('/ads',[AdminController::class,'ads'])->name('admin.ads');
     });
 });

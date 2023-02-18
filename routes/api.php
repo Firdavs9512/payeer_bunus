@@ -21,3 +21,4 @@ use App\Http\Controllers\api\StatistikaController;
 
 
 Route::get('/statistika',[StatistikaController::class,'index']);
+Route::post('/admin/statistika',[StatistikaController::class,'adminstatistik']);
