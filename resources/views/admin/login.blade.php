@@ -138,6 +138,11 @@ body {
             $.notifyBar({ cssClass: "error", html: error });
         }
 
+        var info = "{{ Session::get('info') }}";
+        if (info !== ""){
+          $.notifyBar({cssClass:'info',html: info});
+        }
+
       </script>
 </body>
 </html>
