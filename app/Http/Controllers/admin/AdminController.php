@@ -4,13 +4,23 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Bonus;
+use App\Models\Payment;
+use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index')->with('info',session('admin'));
+        $data = [
+            'users' => User::all()->count(),
+            'payments' => Payment::all()->count(),
+            'bonuses' => Bonus::all()->count(),
+            'newusers' => Setting::find(3)['value_int'],
+        ];
+        return view('admin.index')->with('data',$data);
     }
 
 

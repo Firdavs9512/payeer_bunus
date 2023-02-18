@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HelperController extends Controller
@@ -35,5 +36,40 @@ class HelperController extends Controller
 
 
         return response()->json(['error' => 'Request data not found!' ]);
+    }
+
+
+    // Admin holatida yangi user yaratish uchun funtion
+    public function newuser()
+    {
+        return view('admin.newuser');
+    }
+
+    public function createuser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'ip' => 'required|unique:users'
+        ]);
+
+        $user = User::create([
+            'name' => $request['name'],
+            'password' => $request['password'],
+            'refer' => $request['refer'],
+            'ip' => $request['ip'],
+            'balanse' => $request['balanse'],
+            'money' => $request['balanse'],
+            'payeer' => $request['payeer'],
+            'email' => $request['email'],
+        ]);
+
+        if (empty($user)){
+            return redirect('/admin/new/user')->with('error','Error for create user!');
+        }
+
+
+        return redirect('/admin/new/user')->with('info','User created successfull!');
     }
 }

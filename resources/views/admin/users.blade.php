@@ -3,6 +3,7 @@
 
 <main class="container">
 <h2 class="big-text">Barcha foydalanuvchilar</h2>
+<a style="margin-left: 50px;margin-bottom:20px" class="btn" href="{{ route('admin.create.user') }}">Create new user</a>
 
 <div class="statistik">
 	<table>

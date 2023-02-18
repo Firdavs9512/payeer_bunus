@@ -69,5 +69,7 @@ Route::middleware(['admin'])->group(function (){
         Route::get('/settings',[AdminController::class,'settings'])->name('admin.settings');
         Route::post('/settings',[HelperController::class,'settingupdate']);
         Route::get('/ads',[AdminController::class,'ads'])->name('admin.ads');
+        Route::get('/new/user',[HelperController::class,'newuser'])->name('admin.create.user');
+        Route::post('/new/user',[HelperController::class,'createuser'])->name('admin.newuser');
     });
 });
