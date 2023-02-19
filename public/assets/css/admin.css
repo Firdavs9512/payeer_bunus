@@ -15,6 +15,7 @@ body {
 	margin: 0 auto;
 }
 
+
 header {
 	padding: 5px;
 }
@@ -27,6 +28,23 @@ nav{
 	padding: 15px;
 	justify-content: space-evenly;
 }
+
+@media only screen and (max-width : 520px) {
+	.container{
+		max-width: 520px;
+		width: 300px;
+	}
+
+	nav {
+		display: flex;
+		flex-direction: column;
+	}
+
+	a {
+		margin: 5px;
+	}
+}
+
 
 a {
 	text-decoration: none;
@@ -91,4 +109,5 @@ input {
 	overflow: hidden;
 	outline: none;
 	border: none;
+	margin: 5px;
 }
