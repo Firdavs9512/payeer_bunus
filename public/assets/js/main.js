@@ -8,6 +8,17 @@ $.getJSON("/api/statistika", function(data) {
   // console.log(data);
 });
 
+// $.getJSON("/api/ads/reklama/yuqori1",function(data){
+//   // console.log(data.data);
+//   let nav = '<div>';
+//   $.each(data.data, function(i, item) {
+//     nav += item.url;
+//   });
+//   nav += '</div>';
+//   $.('#a_reklama1').html(nav);
+//   console.log(nav);
+// });
+
 
 $('#withdraw').click( () => {
   $.ajax({

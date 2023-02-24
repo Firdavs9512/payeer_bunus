@@ -38,5 +38,11 @@ class SettingSeeder extends Seeder
             'value' => '0',
             'value_int' => 0,
         ]);
+
+        Setting::create([
+            'name' => 'Header',
+            'value' => '',
+            'value_int' => 0,
+        ]);
     }
 }

@@ -2,7 +2,7 @@
     <div class="post__title">
         Текстовая реклама
     </div>
-    <div class="reklama">
+    <div id="textreklama" class="reklama">
         <div class="reklama-main">
             <a href="#">
                 <b>Скрипт букса за 300 рублей</b>
@@ -40,6 +40,21 @@
         </div>
     </div>
 </div>
-{{-- @foreach ($rek as $ke)
-    {{   $ke }}
-@endforeach --}}
+<script type="text/javascript">
+    bos = '<div class="reklama-main">';
+    axir = '</div>';
+    fetch('/api/ads/reklama/textreklama').then(
+        function(response){
+            return response.json();
+        }).then(function(data){
+            // console.log(data);
+            var reklama = '';
+            data.data.forEach((rek)=> {
+                // console.log(rek);
+                reklama += bos;
+                reklama += rek.url;
+                reklama += axir;
+            })
+            document.getElementById("textreklama").innerHTML = reklama;
+        })
+</script>

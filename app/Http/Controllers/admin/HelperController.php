@@ -33,6 +33,10 @@ class HelperController extends Controller
             return response()->json(['message' => 'New users saved successfull!' ]);
         }
 
+        if ($request->how = 'header_change'){
+            Setting::where('name','Header')->update(['value' => $request->header_change]);
+            return response()->json(['message' => 'Header value change successfull!']);
+        }
 
 
         return response()->json(['error' => 'Request data not found!' ]);

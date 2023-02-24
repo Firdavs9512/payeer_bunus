@@ -7,12 +7,16 @@
             Ежедневные бонусы и сёрфинг
         </div>
 
-        <x-postads />
+        <div class="post__ads">
+            <a href="https://www.neobux.com/?r=Nobody9512"><img src="https://www.neobux.com/imagens/banner5.gif" width="468" height="60"></a>
+        </div>
 
         <div class="post__content">
             <x-texticon />
 
-            <x-postads url="https://linkslot.ru/promo/dummy/468x60.jpg" />
+            <div class="post__ads">
+                <a href="https://www.neobux.com/?r=Nobody9512"><img src="https://www.neobux.com/imagens/banner9.gif" width="468" height="60"></a>
+            </div>
 
             <div class="post__content-main">
                 <h2>Последние 50 начислений</h2>

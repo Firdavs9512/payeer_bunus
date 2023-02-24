@@ -16,6 +16,16 @@ ports:
 
 migrate:
 	php artisan migrate
+	php artisan db:seed --class=SettingSeeder
+	php artisan db:seed --class=AdminSeeder
+	php artisan db:seed --class=AdsenSeeder
+
+restart:
+	php artisan migrate:fresh
+	php artisan db:seed --class=SettingSeeder
+	php artisan db:seed --class=AdminSeeder
+	php artisan db:seed --class=AdsenSeeder
 
 job:
 	php artisan schedule:run >> /dev/null 2>&1
+

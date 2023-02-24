@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\StatistikaController;
+use App\Http\Controllers\api\AdsensController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,3 +24,6 @@ use App\Http\Controllers\api\StatistikaController;
 
 Route::get('/statistika',[StatistikaController::class,'index']);
 Route::post('/admin/statistika',[StatistikaController::class,'adminstatistik']);
+Route::get('/ads/reklama/yuqori1',[AdsensController::class,'index1']);
+Route::get('/ads/reklama/textreklama',[AdsensController::class,'text_reklama']);
+Route::get('/ads/reklama/baner',[AdsensController::class,'getbonusbaner']);

@@ -17,7 +17,11 @@
 	<div>
 		<label>Day payments: </label>
 		<input type="text" id="day_payments"><input onclick="$().updatedata('day_payments')" type="button" value="Change">
-	</div>		
+	</div>	
+	<div>
+		<label>Header change: </label>
+		<input type="text" id="header_change"><input onclick="$().updatedata('header_change')" type="button" value="Change">
+	</div>	
 </div>
 
 </main>

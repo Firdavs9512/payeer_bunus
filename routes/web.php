@@ -69,8 +69,11 @@ Route::middleware(['admin'])->group(function (){
         Route::get('/settings',[AdminController::class,'settings'])->name('admin.settings');
         Route::post('/settings',[HelperController::class,'settingupdate']);
         Route::get('/ads',[AdsenController::class,'ads'])->name('admin.ads');
+        Route::post('/ads/create',[AdsenController::class,'create'])->name('admin.ads.create');
+        Route::get('/ads/{id}',[AdsenController::class,'show'])->name('admin.ads.show');
+        Route::post('/ads/{id}',[AdsenController::class,'update'])->name('admin.ads.update');
+        Route::get('/ads/{id}/delete',[AdsenController::class,'delete'])->name('admin.ads.delete');
         Route::get('/new/user',[HelperController::class,'newuser'])->name('admin.create.user');
         Route::post('/new/user',[HelperController::class,'createuser'])->name('admin.newuser');
-        Route::post('/ads/create',[AdsenController::class,'create'])->name('admin.ads.create');
     });
 });
