@@ -12,7 +12,7 @@
     <script src="https://www.google.com/recaptcha/enterprise.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
-  <script type='text/javascript' src='//pl18519449.highcpmrevenuenetwork.com/94/d7/d8/94d7d804e7ae81a68e08e827aebef947.js'></script>
+  <!-- <script type='text/javascript' src='//pl18519449.highcpmrevenuenetwork.com/94/d7/d8/94d7d804e7ae81a68e08e827aebef947.js'></script> -->
   {{ $GLOBALS['HEADER'] }}
     @vite('resources/css/app.css')
 </head>

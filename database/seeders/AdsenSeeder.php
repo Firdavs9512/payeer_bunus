@@ -79,21 +79,21 @@ class AdsenSeeder extends Seeder
         // Urtadagi oddiy rasmli banerlar
         Adsen::create([
             'name' => 'Image baners yuqoridaki',
-            'url' => '<img src="https://picsum.photos/200/300" width="200" height="300" alt="">',
+            'url' => '<img src="https://bannerswall.ru/promo/dummy/468x60.png" width="468" height="60">',
             'location' => 'yuqori_image_baner'
         ]);
 
         // Urtadagi oddiy rasmli banerlar
         Adsen::create([
             'name' => 'Bonus olishda ishlatiladigan baner',
-            'url' => '<img src="https://picsum.photos/200/300" width="200" height="300" alt="">',
+            'url' => '<img src="https://bannerswall.ru/promo/dummy/468x60.png" width="468" height="60">',
             'location' => 'bonus_olishda_ishlatiladigan_baner'
         ]);
 
         // Qushimcha image baner
         Adsen::create([
             'name' => 'Qushimcha image baner',
-            'url' => '<img src="https://picsum.photos/200/300" width="200" height="300" alt="">',
+            'url' => '<img src="https://bannerswall.ru/promo/dummy/468x60.png" width="468" height="60">',
             'location' => 'qushimcha_image_baner'
         ]);
 
@@ -142,6 +142,13 @@ class AdsenSeeder extends Seeder
                 <p>promomaxxx.ru</p>
             </a>',
             'location' => 'yozuvli_reklama'
+        ]);
+
+        // Index pagedagi pastagi yozivli reklam
+        Adsen::create([
+            'name' => 'Index pasadigi yozuvli reklama',
+            'url' => '<a href="#">Реклама от CashClix.ru</a>',
+            'location' => 'index_yozuvli_reklama',
         ]);
     }
 }

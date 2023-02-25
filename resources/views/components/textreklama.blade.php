@@ -47,7 +47,7 @@
         function(response){
             return response.json();
         }).then(function(data){
-            // console.log(data);
+            console.log(data);
             var reklama = '';
             data.data.forEach((rek)=> {
                 // console.log(rek);

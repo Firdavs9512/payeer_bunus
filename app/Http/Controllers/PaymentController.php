@@ -62,6 +62,11 @@ class PaymentController extends Controller
             return response()->json(['error'=>'На вашем счету достаточно средств. Минимум на вывод 1 рубль']);
         }
 
+        // Payment holatini tekshirish admin tomonidan
+        if (0 == Setting::where('name','Payment_action')){
+            return response()->json(['error'=>'Мы работаем над исправлением этой ошибки. Приносим извинения за неудобства']);
+        }
+
         // Agar refer bulsa unga 30% miqdorini utkazamiz
         $refer = User::find(auth()->user()->refer);
         if (isset($refer))

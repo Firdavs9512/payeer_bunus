@@ -44,5 +44,11 @@ class SettingSeeder extends Seeder
             'value' => '',
             'value_int' => 0,
         ]);
+
+        Setting::create([
+            'name' => 'Payment_action',
+            'value' => '',
+            'value_int' => 1,
+        ]);
     }
 }

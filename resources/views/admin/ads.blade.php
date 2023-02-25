@@ -2,7 +2,7 @@
 
 
 <main class="container">
-<h2 class="big-text">Settings</h2>
+<h2 class="big-text">Ads create</h2>
 
 <div class="statistik">
 	<form action="{{ route('admin.ads.create') }}" method="post">

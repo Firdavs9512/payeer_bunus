@@ -7,7 +7,10 @@
             Ежедневные бонусы и сёрфинг
         </div>
 
-        <x-postads />
+        <div class="post__ads">
+            {!! $GLOBALS['yuqori_image_baner'] !!}
+        </div>
+        <!-- <x-postads /> -->
 
         <div class="post__content">
 
@@ -24,9 +27,7 @@
                     Рекламный сайт будет открыт в новой вкладке.
                 </div>
                 <div id="number_b" class="post__ads">
-                    <a id="bonus-ads">
-                        <img src="https://linkslot.ru/promo/dummy/468x60.jpg" width="468" height="60" style="border:0;margin:0;padding:0;">
-                    </a>
+                    {!! $GLOBALS['ASOSIY_BANER'] !!}
                 </div>
                 <div id="number_a" style="display:flex;flex-direction:row;justify-content: center">
                     Время ожидания после клика по баннеру: <div id="sec"> 0</div> сек. из 10

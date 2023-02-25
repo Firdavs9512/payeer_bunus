@@ -15,7 +15,7 @@ let canGoBack = true;
 console.log('cascsa');
 $('#bonus-ads').click(() => {
   // Send a new form
-  window.open("http://localhost", "_blank");
+  // window.open("http://localhost", "_blank");
 
   $(window).on('focus', () => {
 	  oyna = true;

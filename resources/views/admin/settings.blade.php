@@ -21,7 +21,14 @@
 	<div>
 		<label>Header change: </label>
 		<input type="text" id="header_change"><input onclick="$().updatedata('header_change')" type="button" value="Change">
-	</div>	
+	</div>
+	<div>
+		<label>Tolov tizimi holati: </label>
+		<select name="payment_action" id="select">
+			<option value="ochiq">Ochiq</option>
+			<option value="yopiq">Yopiq</option>
+		</select><input onclick="$().updatedata('payment_action')" type="button" value="Change">
+	</div>
 </div>
 
 </main>

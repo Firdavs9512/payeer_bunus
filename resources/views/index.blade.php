@@ -8,14 +8,14 @@
         </div>
 
         <div class="post__ads">
-            <a href="https://www.neobux.com/?r=Nobody9512"><img src="https://www.neobux.com/imagens/banner5.gif" width="468" height="60"></a>
+            <a target="_blank" href="https://www.neobux.com/?r=Nobody9512"><img src="https://www.neobux.com/imagens/banner5.gif" width="468" height="60"></a>
         </div>
 
         <div class="post__content">
             <x-texticon />
 
             <div class="post__ads">
-                <a href="https://www.neobux.com/?r=Nobody9512"><img src="https://www.neobux.com/imagens/banner9.gif" width="468" height="60"></a>
+                <a target="_blank" href="https://www.neobux.com/?r=Nobody9512"><img src="https://www.neobux.com/imagens/banner9.gif" width="468" height="60"></a>
             </div>
 
             <div class="post__content-main">
@@ -27,13 +27,13 @@
                 </div>
             </div>
             <div class="post__ads" style="margin-top: 15px">
-                <img src="https://bannerswall.ru/promo/dummy/468x60.png" width="468" height="60">
+                {!! $GLOBALS['qushimcha_image_baner'] !!}
             </div>
             <div class="post__ads" style="margin-top: 10px">
-                <img src="https://bannerswall.ru/promo/dummy/468x60.png" width="468" height="60">
+                {!! $GLOBALS['qushimcha_image_baner'] !!}
             </div>
             <div class="post__ads">
-                <a href="#">Реклама от CashClix.ru</a>
+                {!! $GLOBALS['index_yozuvli_reklama'] !!}
             </div>
         </div>
 

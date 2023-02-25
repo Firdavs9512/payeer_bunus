@@ -33,9 +33,16 @@ class HelperController extends Controller
             return response()->json(['message' => 'New users saved successfull!' ]);
         }
 
-        if ($request->how = 'header_change'){
+        if ($request->how == 'header_change'){
             Setting::where('name','Header')->update(['value' => $request->header_change]);
             return response()->json(['message' => 'Header value change successfull!']);
+        }
+
+        if ($request->how == 'payment_action'){
+            $payment = Setting::where('name', 'Payment_action')->first();
+            $payment->value_int = $request->payment_action == 'yopiq' ? 0 : 1;
+            $payment->save();
+            return response()->json(['message' => 'Payment action successfull changed!' ]);
         }
 
 
