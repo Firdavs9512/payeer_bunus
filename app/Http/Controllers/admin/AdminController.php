@@ -20,6 +20,7 @@ class AdminController extends Controller
             'bonuses' => Bonus::all()->count(),
             'newusers' => Setting::find(3)['value_int'],
             'payment_action' => Setting::where('name','Payment_action')->first()->value_int,
+            'sitename' => Setting::where('name','site_name')->first()->value,
         ];
         return view('admin.index')->with('data',$data);
     }
@@ -27,7 +28,10 @@ class AdminController extends Controller
 
     public function settings()
     {
-        return view('admin.settings');
+        $data =[
+            'sitename' => Setting::where('name', 'site_name')->first()->value,
+        ];
+        return view('admin.settings')->with('data' , $data);
     }
 
 

@@ -7,6 +7,10 @@
 <div class="statistik">
 	<input type="hidden" id="token" data-token="{{ csrf_token() }}">
 	<div>
+		<label>Site name: </label>
+		<input type="text" value="{{ $data->sitename }}"><input type="button" value="Change" >
+	</div>
+	<div>
 		<label>Day work: </label>
 		<input type="text" id="work_day"><input onclick="$().updatedata('work_day')" type="button" value="Change">
 	</div>
