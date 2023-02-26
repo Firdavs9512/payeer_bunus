@@ -45,6 +45,13 @@ class HelperController extends Controller
             return response()->json(['message' => 'Payment action successfull changed!' ]);
         }
 
+        if ($request->how == 'site_name'){
+            $site = Setting::where('name','site_name')->first();
+            $site->value = $request->site_name;
+            $site->save();
+            return response()->json(['message' => 'Site name successfull changed!']);
+        }
+
 
         return response()->json(['error' => 'Request data not found!' ]);
     }

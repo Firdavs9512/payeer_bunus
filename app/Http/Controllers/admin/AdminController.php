@@ -30,6 +30,8 @@ class AdminController extends Controller
     {
         $data =[
             'sitename' => Setting::where('name', 'site_name')->first()->value,
+            'header' => Setting::where('name','Header')->first()->value,
+            'payment_type' => Setting::where('name','Payment_action')->first()->value_int,
         ];
         return view('admin.settings')->with('data' , $data);
     }

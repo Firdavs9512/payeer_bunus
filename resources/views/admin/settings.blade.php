@@ -8,7 +8,7 @@
 	<input type="hidden" id="token" data-token="{{ csrf_token() }}">
 	<div>
 		<label>Site name: </label>
-		<input type="text" value="{{ $data->sitename }}"><input type="button" value="Change" >
+		<input type="text" value="{{ $data['sitename'] }}" id="site_name"><input onclick="$().updatedata('site_name')" type="button" value="Change" >
 	</div>
 	<div>
 		<label>Day work: </label>
@@ -24,13 +24,13 @@
 	</div>	
 	<div>
 		<label>Header change: </label>
-		<input type="text" id="header_change"><input onclick="$().updatedata('header_change')" type="button" value="Change">
+		<input value="{{ $data['header'] }}" type="text" id="header_change"><input onclick="$().updatedata('header_change')" type="button" value="Change">
 	</div>
 	<div>
 		<label>Tolov tizimi holati: </label>
 		<select name="payment_action" id="select">
-			<option value="ochiq">Ochiq</option>
-			<option value="yopiq">Yopiq</option>
+			<option value="ochiq" {{ $data['payment_type'] == 1 ? 'Selected' : '' }}>Ochiq</option>
+			<option value="yopiq" {{ $data['payment_type'] == 0 ? 'Selected' : '' }}>Yopiq</option>
 		</select><input onclick="$().updatedata('payment_action')" type="button" value="Change">
 	</div>
 </div>

@@ -32,6 +32,7 @@ $.fn.updatedata = function (kim) {
     new_users = $('#new_users').val();
     day_payments = $('#day_payments').val();
     header_change = $('#header_change').val();
+    site_name = $('#site_name').val();
     payment_action = $('select option:selected').val();
     $.ajax({
         url: "/admin/settings",
@@ -43,6 +44,7 @@ $.fn.updatedata = function (kim) {
             'new_users': new_users,
             'header_change': header_change,
             'payment_action': payment_action,
+            'site_name': site_name,
             'how': kim,
         },
         success: function(data){
