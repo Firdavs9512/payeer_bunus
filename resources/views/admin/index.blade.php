@@ -9,6 +9,7 @@
 	<div>Barcha pul yechishlar: <span>{{ $data['payments'] }} ta</span></div>
 	<div>Barcha bonuslar soni: <span>{{ $data['bonuses'] }} ta</span></div>
 	<div>Barcha Yangi foydalanuvchilar: <span>{{ $data['newusers'] }} ta</span></div>
+    <div>Web site nomi: <span>{{ $data['sitename'] }}</span></div>
 	<div>Tolov tizimi holati: <span>{{ $data['payment_action']==1 ? 'Ochiq' : 'Yopiq' }}</span></div>
 </div>
 
