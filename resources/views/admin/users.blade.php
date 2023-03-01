@@ -3,8 +3,12 @@
 
 <main class="container">
 <h2 class="big-text">Barcha foydalanuvchilar</h2>
-<a style="margin-left: 50px;margin-bottom:20px" class="btn" href="{{ route('admin.create.user') }}">Create new user</a>
-
+<div style="display: flex;flex-direction: row; justify-content: space-between">
+	<a style="margin-left: 50px;margin-bottom:20px" class="btn" href="{{ route('admin.create.user') }}">Create new user</a>
+	<form action="" method="get">
+		<input type="text" name="search" placeholder="Search"><button class="btn" type="submit">Search</button>
+	</form>
+</div>
 <div class="statistik">
 	<table>
 		<thead>

@@ -11,9 +11,16 @@ use Spatie\LaravelIgnition\Renderers\ErrorPageRenderer;
 class UserController extends Controller
 {
     // Userni paginator holatida kurish uchun
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(10)->fragment('users');
+        if (isset($request->search)){
+            $users = User::where ( 'name', 'LIKE', '%' . $request->search . '%' )
+                            ->orWhere ( 'email', 'LIKE', '%' . $request->search . '%' )
+                            ->paginate (10)
+                            ->setPath ( '' );
+        }else {
+            $users = User::paginate(10)->fragment('users');
+        }
         return view('admin.users')->with('users',$users);
     }
 
