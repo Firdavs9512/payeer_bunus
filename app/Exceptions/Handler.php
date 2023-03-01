@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Helper\Telegram;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -44,7 +45,9 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+            $telegram = new Telegram();
+            $message = "Time: ".str(now())."\nError: ".$e->getMessage()."\nIp address: ".$_SERVER['REMOTE_ADDR'];
+            $telegram->sendMessage($message);
         });
     }
 }

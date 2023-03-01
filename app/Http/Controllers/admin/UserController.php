@@ -13,7 +13,7 @@ class UserController extends Controller
     // Userni paginator holatida kurish uchun
     public function index()
     {
-        $users = User::paginate(2)->fragment('users');
+        $users = User::paginate(10)->fragment('users');
         return view('admin.users')->with('users',$users);
     }
 
@@ -47,7 +47,7 @@ class UserController extends Controller
     // payment bulimi uchun
     public function payment()
     {
-        $payments = Payment::paginate(1)->fragment('payments');
+        $payments = Payment::paginate(10)->fragment('payments');
         return view('admin.payments')->with('payments',$payments);
     }
 }

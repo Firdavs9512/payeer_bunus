@@ -7,6 +7,7 @@ use App\Models\Payment;
 use App\Models\User;
 use App\Http\Controllers\cpayeer;
 use App\Models\Setting;
+use App\Helper\Telegram;
 
 class PaymentController extends Controller
 {
@@ -19,9 +20,9 @@ class PaymentController extends Controller
 
     private function payeer($send_a, $send_s){
         // require_once('cpayeer.php');
-        $accountNumber = env("PAYEER_ADDR","P1026451819");
-        $apiId = env("PAYEER_API_KEY", 1833554167);
-        $apiKey = env("PAYEER_API_SECRET");
+        $accountNumber = env("PAYEER_ADDR") ?? Setting::where('name','Payeer_address')->first()->value;
+        $apiId = env("PAYEER_ID") ?? Setting::where('name','Payeer_id')->first()->value_int;
+        $apiKey = env("PAYEER_SECRET") ?? Setting::where('name','Payeer_sicret')->first()->value;
         $payeer = new CPayeer($accountNumber, $apiId, $apiKey);
         if ($payeer->isAuth())
         {
@@ -63,8 +64,8 @@ class PaymentController extends Controller
         }
 
         // Payment holatini tekshirish admin tomonidan
-        if (0 == Setting::where('name','Payment_action')){
-            return response()->json(['error'=>'Мы работаем над исправлением этой ошибки. Приносим извинения за неудобства']);
+        if (0 == Setting::where('name','Payment_action')->first()->value_int){
+            return response()->json(['error'=>'Платежная система в настоящее время закрыта. Пожалуйста, повторите попытку позже']);
         }
 
         // Agar refer bulsa unga 30% miqdorini utkazamiz
@@ -77,10 +78,26 @@ class PaymentController extends Controller
             $refer->save();
         }
 
+        // User pul yechayotgani haqida adminga message yuborish
+        $mess = new Telegram();
+        $text = "User pul yechish haqida request yubordi.\nUsername: ".auth()->user()->name
+                ."\nEmail: ".auth()->user()->email
+                ."\nMoney: ".auth()->user()->balanse
+                ."\nIp address: ".$_SERVER['REMOTE_ADDR']
+                ."\nPayeer: ".auth()->user()->payeer
+                ."\nTime: ".now();
+        $mess->sendMessage($text);
+
+
         // BU yerga payeer pul utkazish function yoziladi
         $ress = $this->payeer(auth()->user()->payeer,auth()->user()->balance);
         if (isset($ress["error"]))
         {
+            $message = "Error for payement system.\nPul yechishda payeerdan error kelyapti.\nUser: "
+                        .auth()->user()->email
+                        ."\nTime: ".now();
+            $tel = new Telegram();
+            $tel->sendMessage($message);
             return response()->json(['error'=>$ress['error']]);
         }
 

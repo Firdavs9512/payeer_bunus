@@ -25,6 +25,9 @@ restart:
 	php artisan db:seed --class=SettingSeeder
 	php artisan db:seed --class=AdminSeeder
 	php artisan db:seed --class=AdsenSeeder
+	php artisan db:seed --class=UserSeeder
+	php artisan db:seed --class=BonusSeeder
+	php artisan db:seed --class=PaymentSeeder
 
 job:
 	php artisan schedule:run >> /dev/null 2>&1

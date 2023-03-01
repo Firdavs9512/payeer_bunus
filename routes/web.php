@@ -12,6 +12,7 @@ use App\Http\Controllers\BonusController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\HelperController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\FilemanagerController;
 use App\Http\Controllers\AdsenController;
 
 /*
@@ -75,5 +76,6 @@ Route::middleware(['admin'])->group(function (){
         Route::get('/ads/{id}/delete',[AdsenController::class,'delete'])->name('admin.ads.delete');
         Route::get('/new/user',[HelperController::class,'newuser'])->name('admin.create.user');
         Route::post('/new/user',[HelperController::class,'createuser'])->name('admin.newuser');
+        Route::get('file-manager',[FilemanagerController::class,'index'])->name('admin.filemanager');
     });
 });

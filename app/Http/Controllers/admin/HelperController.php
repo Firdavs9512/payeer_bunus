@@ -52,6 +52,27 @@ class HelperController extends Controller
             return response()->json(['message' => 'Site name successfull changed!']);
         }
 
+        if ($request->how == 'payeer_id'){
+            $payeer = Setting::where('name','Payeer_id')->first();
+            $payeer->value_int = $request->payeer_id;
+            $payeer->save();
+            return response()->json(['message' => 'Payeer id successfull changed!']);
+        }
+
+        if ($request->how == 'payeer_sicret'){
+            $paye = Setting::where('name','Payeer_sicret')->first();
+            $paye->value = $request->payeer_sicret;
+            $paye->save();
+            return response()->json(['message' => 'Payeer sicret successfull changed!']);
+        }
+
+        if ($request->how == "payeer_address"){
+            $payeer_a = Setting::where('name','Payeer_address')->first();
+            $payeer_a->value = $request->payeer_address;
+            $payeer_a->save();
+            return response()->json(['message' => 'Payeer address successfull changed!']);
+        }
+
 
         return response()->json(['error' => 'Request data not found!' ]);
     }

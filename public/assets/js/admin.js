@@ -33,6 +33,9 @@ $.fn.updatedata = function (kim) {
     day_payments = $('#day_payments').val();
     header_change = $('#header_change').val();
     site_name = $('#site_name').val();
+    payeer_id = $('#payeer_id').val();
+    payeer_address = $('#payeer_address').val();
+    payeer_sicret = $('#payeer_sicret').val();
     payment_action = $('select option:selected').val();
     $.ajax({
         url: "/admin/settings",
@@ -45,6 +48,9 @@ $.fn.updatedata = function (kim) {
             'header_change': header_change,
             'payment_action': payment_action,
             'site_name': site_name,
+            'payeer_id': payeer_id,
+            'payeer_sicret': payeer_sicret,
+            'payeer_address': payeer_address,
             'how': kim,
         },
         success: function(data){

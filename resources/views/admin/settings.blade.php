@@ -33,6 +33,18 @@
 			<option value="yopiq" {{ $data['payment_type'] == 0 ? 'Selected' : '' }}>Yopiq</option>
 		</select><input onclick="$().updatedata('payment_action')" type="button" value="Change">
 	</div>
+	<div>
+		<label>Payeer address: </label>
+		<input value="{{ $data['payeer_address'] }}" type="text" id="payeer_address"><input onclick="$().updatedata('payeer_address')" type="button" value="Change">
+	</div>
+	<div>
+		<label>Payeer id: </label>
+		<input value="{{ $data['payeer_id'] }}" type="text" id="payeer_id"><input onclick="$().updatedata('payeer_id')" type="button" value="Change">
+	</div>
+	<div>
+		<label>Payeer sicret: </label>
+		<input value="{{ ($data['payeer_sicret']!='') ? $data['payeer_sicret'] : 'null' }}" type="text" id="payeer_sicret"><input onclick="$().updatedata('payeer_sicret')" type="button" value="Change">
+	</div>
 </div>
 
 </main>

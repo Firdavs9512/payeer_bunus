@@ -56,5 +56,23 @@ class SettingSeeder extends Seeder
             'value' => 'payeer-bonus.uz',
             'value_int' => 0,
         ]);
+
+        Setting::create([
+            'name' => 'Payeer_id',
+            'value' => '',
+            'value_int' => 0,
+        ]);
+
+        Setting::create([
+            'name' => 'Payeer_sicret',
+            'value' => '',
+            'value_int' => 0,
+        ]);
+
+        Setting::create([
+            'name' => 'Payeer_address',
+            'value' => 'P1026451819',
+            'value_int' => 0,
+        ]);
     }
 }

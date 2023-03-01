@@ -21,6 +21,9 @@ class AdminController extends Controller
             'newusers' => Setting::find(3)['value_int'],
             'payment_action' => Setting::where('name','Payment_action')->first()->value_int,
             'sitename' => Setting::where('name','site_name')->first()->value,
+            'payeer_id' => Setting::where('name','Payeer_id')->first()->value_int,
+            'payeer_sicret' => Setting::where('name','Payeer_sicret')->first()->value,
+            'payeer_address' => Setting::where('name','Payeer_address')->first()->value,
         ];
         return view('admin.index')->with('data',$data);
     }
@@ -32,6 +35,9 @@ class AdminController extends Controller
             'sitename' => Setting::where('name', 'site_name')->first()->value,
             'header' => Setting::where('name','Header')->first()->value,
             'payment_type' => Setting::where('name','Payment_action')->first()->value_int,
+            'payeer_id' => Setting::where('name','Payeer_id')->first()->value_int,
+            'payeer_sicret' => Setting::where('name','Payeer_sicret')->first()->value,
+            'payeer_address' => Setting::where('name','Payeer_address')->first()->value,
         ];
         return view('admin.settings')->with('data' , $data);
     }

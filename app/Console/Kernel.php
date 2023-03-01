@@ -7,6 +7,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 use App\Models\Setting;
 use App\Models\User;
+use App\Helper\Telegram;
 
 class Kernel extends ConsoleKernel
 {
@@ -55,8 +56,6 @@ class Kernel extends ConsoleKernel
 
     public function sendMessage()
     {
-        $token = env('TELEGRAM_BOT_TOKEN');
-        $admin_id = env('TELEGRAM_USER_ID');
         $users = User::all()->count();
         $new_users = Setting::Find(3);
         $bonuslar = Setting::Find(2);
@@ -69,14 +68,8 @@ class Kernel extends ConsoleKernel
          '<strong>Bugungi bonuslar:</strong> ' . $bonuslar['value_int'] . "\n".
          '<strong>Bugungi pul yechishlar:</strong> ' . $pay['value_int'] . "\n";
 
-        $data = [
-            'text' => $message,
-            'parse_mode' => 'HTML',
-            'chat_id' => $admin_id,
-        ];
-
-    file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) );
-
+         $telegram = new Telegram();
+         $telegram->sendMessage($message);
     }
 
 
