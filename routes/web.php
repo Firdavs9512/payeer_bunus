@@ -64,7 +64,7 @@ Route::middleware(['admin'])->group(function (){
     Route::prefix('admin')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('admin');
         Route::get('/users',[UserController::class,'index'])->name('admin.users');
-        Route::get('/users/{id}',[UserController::class, 'show']);
+        Route::get('/users/{id}',[UserController::class, 'show'])->name('admin.user.show');
         Route::post('/users/{id}',[UserController::class, 'update'])->name('admin.user.update');
         Route::get('/payments',[UserController::class,'payment'])->name('admin.payment');
         Route::get('/settings',[AdminController::class,'settings'])->name('admin.settings');
@@ -76,6 +76,9 @@ Route::middleware(['admin'])->group(function (){
         Route::get('/ads/{id}/delete',[AdsenController::class,'delete'])->name('admin.ads.delete');
         Route::get('/new/user',[HelperController::class,'newuser'])->name('admin.create.user');
         Route::post('/new/user',[HelperController::class,'createuser'])->name('admin.newuser');
-        Route::get('file-manager',[FilemanagerController::class,'index'])->name('admin.filemanager');
+        Route::get('/new-payments',[PaymentController::class, 'newpayment'])->name('admin.new.payment');
+        Route::get('/new-payments/{id}',[PaymentController::class, 'newpaymentreq'])->name('admin.new.payment.show');
+        Route::post('/new-payments/{id}',[PaymentController::class, 'newpaymentupdate'])->name('admin.new.payment.update');
+        // Route::get('file-manager',[FilemanagerController::class,'index'])->name('admin.filemanager');
     });
 });

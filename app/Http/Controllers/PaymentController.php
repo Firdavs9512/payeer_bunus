@@ -90,27 +90,39 @@ class PaymentController extends Controller
 
 
         // BU yerga payeer pul utkazish function yoziladi
-        $ress = $this->payeer(auth()->user()->payeer,auth()->user()->balance);
-        if (isset($ress["error"]))
-        {
-            $message = "Error for payement system.\nPul yechishda payeerdan error kelyapti.\nUser: "
-                        .auth()->user()->email
-                        ."\nTime: ".now();
-            $tel = new Telegram();
-            $tel->sendMessage($message);
-            return response()->json(['error'=>$ress['error']]);
-        }
+        // $ress = $this->payeer(auth()->user()->payeer,auth()->user()->balance);
+        // if (isset($ress["error"]))
+        // {
+        //     $message = "Error for payement system.\nPul yechishda payeerdan error kelyapti.\nUser: "
+        //                 .auth()->user()->email
+        //                 ."\nTime: ".now();
+        //     $tel = new Telegram();
+        //     $tel->sendMessage($message);
+        //     return response()->json(['error'=>$ress['error']]);
+        // } Payeer auto pay don't work! 
+        
 
-
+            /*
+                Papmentga odiy qilib save qilinadi manual pay ishga tushiriladi
+            */
 
         // Payment utkazilgani haqida bazaga malumot qushish
         $payeer = Payment::create([
             'payeer_adress' => auth()->user()->payeer,
             'summ' => auth()->user()->balanse,
-            'number' => $ress['history'], // bu yerga payeerdan pul utkazalgandan kiyin keladigan id yoziladi
+            // 'number' => $ress['history'], // bu yerga payeerdan pul utkazalgandan kiyin keladigan id yoziladi
             'name' => auth()->user()->name,
             'user_id' => auth()->user()->id,
         ]);
+
+        // Adminga habar yuborish
+        $message = "New payment action!\nUser: ".auth()->user()->name
+                    ."\nEmail: ".auth()->user()->email
+                    ."\nPayeer: ".auth()->user()->payeer
+                    ."\nSumma: ".auth()->user()->balanse
+                    ."\nTime: ".now();
+        $tel = new Telegram();
+        $tel->sendMessage($message);
 
         // Userni balansini 0 ga tushurish
         $puser = auth()->user();
@@ -127,4 +139,28 @@ class PaymentController extends Controller
         return response()->json(['message'=> 'Деньги успешно переведены на ваш счет!']);
     }
 
+    // Admin new payment index page
+    public function newpayment()
+    {
+        $payments = Payment::where('status',false)->paginate(10);
+        return view('admin.newpayment')->with('payments',$payments);
+    }
+
+    // Admin panel new payment request
+    public function newpaymentreq($id)
+    {
+        $payment = Payment::find($id);
+        return view('admin.new-payment-show')->with('payment', $payment);
+    }
+
+    // Admin panel new request update function
+    public function newpaymentupdate(Request $request, $id)
+    {
+        // dd($request);
+        $payment = Payment::find($id);
+        $payment->status = $request->payment_action == "tulangan" ? true : false;
+        $payment->number = $request->number;
+        $payment->save();
+        return redirect()->route('admin.new.payment.show',$id)->with('info',"Payment action successfull changed!");
+    }
 }

@@ -35,14 +35,16 @@
                     <table>
                         <thead>
                             <th>Payeer</th>
-                            <th>Summ</th>
-                            <th>Date</th>
+                            <th>Сумма</th>
+                            <th>Статус</th>
+                            <th>Дата</th>
                         </thead>
                         <tbody>
                             @forelse ($payments as $payment)
                             <tr>
                                 <td>{{ $payment->payeer_adress }}</td>
                                 <td>{{ $payment->summ }} руб</td>
+                                <td>{!! $payment->status ? "<div style='color:green;font-weight: bold'>Оплаченный</div>" : "<div style='color:orange;font-weight: bold'>Ожидание</div>" !!}</td>
                                 <td>{{ date_format( new DateTime($payment->created_at), "d F Y H:i" ) }}</td>
                             </tr>
                             @empty

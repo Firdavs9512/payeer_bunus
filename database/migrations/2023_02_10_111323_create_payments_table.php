@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('payeer_adress');
             $table->float('summ');
-            $table->integer('number');
+            $table->integer('number')->nullable();
             $table->string('name');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

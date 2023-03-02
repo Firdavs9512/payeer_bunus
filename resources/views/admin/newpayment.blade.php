@@ -2,7 +2,7 @@
 
 
 <main class="container">
-<h2 class="big-text">Barcha tulab berilgan pullar</h2>
+<h2 class="big-text">Barcha yangi tulovlar</h2>
 
 <div class="statistik">
 	<table>
@@ -13,21 +13,27 @@
 				<td>Payeer address</td>
 				<td>Summ</td>
 				<td>Number</td>
+				<td>Status</td>
 				<td>Tulangani</td>
 			</tr>
 		</thead>
-			@foreach ($payments as $payment)
+			@forelse ($payments as $payment)
 			<tbody>
 				<tr>
-					<th><a href="{{ route('admin.new.payment.show',$payment->id) }}">{{ $payment->id}}#</a></th>
-					<th><a href="{{ route('admin.user.show',$payment->user_id) }}">{{ $payment->name }}</a></th>
+					<th>{{ $payment->id}}</th>
+					<th><a href="{{ route('admin.new.payment.show',$payment->id) }}">{{ $payment->name }}</a></th>
 					<th>{{ $payment->payeer_adress }}</th>
 					<th>{{ $payment->summ }}</th>
-					<th>{{ $payment->number }}</th>
+					<th>{{ $payment->number ?? "null" }}</th>
+					<th>{{ $payment->status ? "Tulangan" : "Tulanmagan" }}</th>
 					<th>{{ date_format( new DateTime($payment->created_at), "d F Y H:i" ) }}</th>
 				</tr>
 			</tbody>
-			@endforeach
+            @empty
+            <tbody>
+                <tr><div style="color:red">New payment not found!</div></tr>
+            </tbody>
+			@endforelse
 	</table>
 {{ $payments->links() }}
 </div>

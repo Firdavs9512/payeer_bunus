@@ -54,7 +54,7 @@ class UserController extends Controller
     // payment bulimi uchun
     public function payment()
     {
-        $payments = Payment::paginate(10)->fragment('payments');
+        $payments = Payment::orderBy('id', 'desc')->paginate(10)->fragment('payments');
         return view('admin.payments')->with('payments',$payments);
     }
 }

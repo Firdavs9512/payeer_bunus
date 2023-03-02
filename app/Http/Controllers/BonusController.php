@@ -64,7 +64,7 @@ class BonusController extends Controller
         }
 
         $request->validate([
-            //'g-recaptcha-response' => ['required', new Recaptcha()],
+            'g-recaptcha-response' => ['required', new Recaptcha()],
         ]);
 
         $oldbonus = Bonus::where('user_id', auth()->user()->id)->get()->sortByDesc('created_at')->first();

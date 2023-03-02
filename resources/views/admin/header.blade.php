@@ -24,6 +24,7 @@
    		<a class="btn" href="{{ route('admin.settings') }}">Setting</a>
    		<a class="btn" href="{{ route('admin.users') }}">Users</a>
    		<a class="btn" href="{{ route('admin.payment') }}">Paymetns</a>
+   		<a class="btn" href="{{ route('admin.new.payment') }}">New payments</a>
    		<a class="btn" href="{{ route('admin.ads') }}">Ads</a>
    		<a class="btn" href="{{ route('admin.logout') }}">Logout</a>
    	</nav>

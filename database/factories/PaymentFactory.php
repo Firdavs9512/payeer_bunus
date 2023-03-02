@@ -24,6 +24,7 @@ class PaymentFactory extends Factory
             'name' => $user->name,
             'user_id' => $user->id,
             'summ' => fake()->randomFloat(3,1,30),
+            'status' => true,
         ];
     }
 }
