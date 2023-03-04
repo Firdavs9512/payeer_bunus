@@ -35,7 +35,7 @@ class AuthController extends Controller
         }
         // dd($request);
         $request->validate([
-            'g-recaptcha-response' => ['required', new Recaptcha()],
+            // 'g-recaptcha-response' => ['required', new Recaptcha()],
             'name'=> 'required|max:15',
             'email' => 'email|required|unique:users',
             'password' => 'min:6',

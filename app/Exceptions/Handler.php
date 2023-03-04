@@ -46,7 +46,8 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             $telegram = new Telegram();
-            $message = "Time: ".str(now())."\nError: ".$e->getMessage()."\nIp address: ".$_SERVER['REMOTE_ADDR'];
+            $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : "User ip not found!";
+            $message = "Time: ".str(now())."\nError: ".$e->getMessage()."\nIp address: ".$ip;
             $telegram->sendMessage($message);
         });
     }
