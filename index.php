@@ -25,8 +25,6 @@ $directories_users = array();
 // Enable highlight.js (https://highlightjs.org/) on view's page
 $use_highlightjs = true;
 
-// highlight.js style
-// for dark theme use 'ir-black'
 $highlightjs_style = 'vs';
 
 // Enable ace.js (https://ace.c9.io/) on view's page
