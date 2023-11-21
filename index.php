@@ -30,7 +30,6 @@ $highlightjs_style = 'vs';
 // Enable ace.js (https://ace.c9.io/) on view's page
 $edit_files = true;
 
-// Default timezone for date() and time()
 // Doc - http://php.net/manual/en/timezones.php
 $default_timezone = 'Etc/UTC'; // UTC
 
