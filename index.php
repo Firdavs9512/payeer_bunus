@@ -18,11 +18,7 @@ $auth_users = array(
     'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
 );
 
-// Readonly users
-// e.g. array('users', 'guest', ...)
-// $readonly_users = array(
-//     'user'
-// );
+
 
 // Global readonly, including when auth is not being used
 $global_readonly = false;
