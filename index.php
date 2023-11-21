@@ -20,7 +20,6 @@ $auth_users = array(
 
 
 
-// Global readonly, including when auth is not being used
 $global_readonly = false;
 
 // user specific directories
