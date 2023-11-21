@@ -18,12 +18,8 @@ $auth_users = array(
     'user' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' //12345
 );
 
-
-
 $global_readonly = false;
 
-// user specific directories
-// array('Username' => 'Directory path', 'Username2' => 'Directory path', ...)
 $directories_users = array();
 
 // Enable highlight.js (https://highlightjs.org/) on view's page
