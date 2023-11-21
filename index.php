@@ -8,11 +8,6 @@ define('VERSION', '2.5.3');
 //Application Title
 define('APP_TITLE', 'Tiny File Manager');
 
-// --- EDIT BELOW CONFIGURATION CAREFULLY ---
-
-// Auth with login/password
-// set true/false to enable/disable it
-// Is independent from IP white- and blacklisting
 $use_auth = true;
 
 // Login user name and password
